@@ -23,7 +23,14 @@ var GameOfLife = {
     SIMULATING: 5,
     PAUSE: 6,
   },
-  Speed: 1000,
+  Speed: 4,
+  SpeedMap: {
+    1: 2000,
+    2: 1000,
+    3: 500,
+    4: 100,
+    5: 50,
+  },
   Steps: 0,
   Width: 20,
   Height: 20,
@@ -48,6 +55,7 @@ var GameOfLife = {
     }
     world.innerHTML = html;
     world.setAttribute("style","width:"+(GameOfLife.Width / GameOfLife.Height) * 100 + "vh");
+    GameOfLife.SetSpeed(document.querySelector('.speed').value);
   },
   GetWorld: function() {
     return document.querySelector('.world');
@@ -68,7 +76,7 @@ var GameOfLife = {
       GameOfLife.SetPhase(GameOfLife.Constants.SIMULATING);
       GameOfLife.FirstGeneration = GameOfLife.Data;
       var start = document.querySelector('.start');
-      setTimeout(GameOfLife.Step, GameOfLife.Speed);
+      setTimeout(GameOfLife.Step, GameOfLife.SpeedMap[GameOfLife.Speed]);
     }
   },
   SetPhase: function(phase) {
@@ -101,7 +109,7 @@ var GameOfLife = {
     }
     GameOfLife.Data = newData;
     GameOfLife.UpdateWorld();
-    setTimeout(GameOfLife.Step, GameOfLife.Speed);
+    setTimeout(GameOfLife.Step, GameOfLife.SpeedMap[GameOfLife.Speed]);
   },
   ToggleLive: function(x, y) {
     var live = GameOfLife.Data[x][y];
@@ -166,4 +174,8 @@ var GameOfLife = {
     GameOfLife.SetStep(0);
     GameOfLife.UpdateWorld();
   },
+  SetSpeed(speed) {
+    GameOfLife.Speed = speed;
+    document.querySelector('.speed-display').innerHTML = "Speed: "+GameOfLife.SpeedMap[GameOfLife.Speed]+"ms";
+  }
 };

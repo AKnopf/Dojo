@@ -3,6 +3,7 @@ body {
   height: 100%;
   margin: 0px;
   font-size: 6vh;
+  color: #555;
 }
 
 .world {
@@ -85,8 +86,8 @@ body {
   background-color: #1d5b74;
 }
 
-.steps {
-  color: #555;
+.speed {
+  margin: 0px;
 }
 
 [data-phase="5"] .start,
