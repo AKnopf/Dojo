@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Game Of Life</title>
+    <script src="GameOfLife.js"></script>
+    <link href="GameOfLife.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body data-phase="4">
+    <div class="world-wrapper">
+      <table class="world">
+      </table>
+    </div>
+    <div class="controls">
+      <span class="start button" onClick="GameOfLife.Start()">Start</span>
+      <span class="pause button" onClick="GameOfLife.PauseContinue()">Pause</span>
+      <span class="reset button" onClick="GameOfLife.Reset()">Reset</span>
+      <span class="steps">Generation: 1</span>
+    </div>
+    <script>
+      GameOfLife.Init()
+    </script>
+  </body>
+</html>
