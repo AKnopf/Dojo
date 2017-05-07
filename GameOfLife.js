@@ -177,5 +177,9 @@ var GameOfLife = {
   SetSpeed(speed) {
     GameOfLife.Speed = speed;
     document.querySelector('.speed-display').innerHTML = "Speed: "+GameOfLife.SpeedMap[GameOfLife.Speed]+"ms";
+  },
+  SetCleanView(active) {
+    document.querySelector('body').setAttribute('data-clean-view', active);
+    window.scrollTo(0,0);
   }
 };
