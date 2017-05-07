@@ -121,6 +121,7 @@ var GameOfLife = {
       GameOfLife.Data[x][y] = GameOfLife.Constants.ALIVE;
       GameOfLife.GetCell(x,y).setAttribute("data-live", GameOfLife.Constants.ALIVE)
     }
+    GameOfLife.SetPopulationDisplay(GameOfLife.GetPopulation());
   },
   AliveNeighbours: function(x, y) {
     return [GameOfLife.FetchLive(x-1, y-1), GameOfLife.FetchLive(x-1, y), GameOfLife.FetchLive(x-1, y+1),
@@ -142,6 +143,10 @@ var GameOfLife = {
         GameOfLife.GetCell(x, y).setAttribute("data-live", GameOfLife.Data[x][y]);
       }
     }
+    GameOfLife.SetPopulationDisplay(GameOfLife.GetPopulation());
+  },
+  GetPopulation: function() {
+    return GameOfLife.Data.flatten().filter(function(live){return live == GameOfLife.Constants.ALIVE}).length;
   },
   Extinguished: function() {
     return !GameOfLife.Data.flatten().some(function(live){return live == GameOfLife.Constants.ALIVE});
@@ -174,12 +179,15 @@ var GameOfLife = {
     GameOfLife.SetStep(0);
     GameOfLife.UpdateWorld();
   },
-  SetSpeed(speed) {
+  SetSpeed: function(speed) {
     GameOfLife.Speed = speed;
     document.querySelector('.speed-display').innerHTML = "Speed: "+GameOfLife.SpeedMap[GameOfLife.Speed]+"ms";
   },
-  SetCleanView(active) {
+  SetCleanView: function(active) {
     document.querySelector('body').setAttribute('data-clean-view', active);
     window.scrollTo(0,0);
-  }
+  },
+  SetPopulationDisplay: function(count) {
+    document.querySelector('.population').innerHTML = "Population: "+count;
+  },
 };
