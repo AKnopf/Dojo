@@ -6,11 +6,14 @@
     <title>Game Of Life</title>
     <script src="GameOfLife.js"></script>
     <link href="GameOfLife.css" rel="stylesheet" type="text/css" />
+    <link href="checkbox.css" rel="stylesheet" type="text/css" />
   </head>
-  <body data-phase="4">
-    <div class="world-wrapper">
-      <table class="world">
-      </table>
+  <body data-phase="4" data-clean-view="false">
+    <div class="clean-view">
+      <div class="world-wrapper">
+        <table class="world">
+        </table>
+      </div>
     </div>
     <div class="controls">
       <span class="start button" onClick="GameOfLife.Start()">Start</span>
@@ -19,6 +22,10 @@
       <span class="steps">Generation: 1</span>
       <span class="speed-display">Speed: 1000ms</span>
       <input class="speed" type="range" min="1" max="5" value="3" step="1" onchange="GameOfLife.SetSpeed(this.value)"/>
+      <div class="checkbox">
+         <input type="checkbox" value="0" id="clean-view" onclick="document.querySelector('body').setAttribute('data-clean-view',this.checked); window.scrollTo(0,0);"/>
+         <label for="clean-view"></label>
+      </div>
     </div>
     <script>
       GameOfLife.Init()

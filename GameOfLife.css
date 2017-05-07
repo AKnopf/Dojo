@@ -12,6 +12,31 @@ body {
   border-collapse: collapse;
 }
 
+[data-clean-view="true"] .world-wrapper {
+  transform: translateX(50%);
+}
+
+[data-clean-view="true"] .world {
+  transform: translateX(-50%);
+}
+
+[data-clean-view="true"] .controls {
+  width: 100%;
+  text-align: center;
+}
+
+[data-clean-view="true"] .clean-view
+{
+  width:100%;
+  display: table;
+}
+
+.clean-view
+{
+  display: inline-block;
+  background-color: #f5f5f5;
+}
+
 .world, .world th, .world td {
   border: 0px solid white;
 }
@@ -47,7 +72,11 @@ body {
   background-color: #2c96c0;
 }
 
-.world-wrapper,
+.world-wrapper {
+  vertical-align: middle;
+  display: table-cell;
+}
+
 .controls {
   display: inline-block;
   vertical-align: top;
@@ -89,6 +118,8 @@ body {
 .speed {
   margin: 0px;
 }
+
+
 
 [data-phase="5"] .start,
 [data-phase="6"] .start {
